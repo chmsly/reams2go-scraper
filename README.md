@@ -10,3 +10,10 @@ Data Extraction: Collects detailed product information.
 CSV Export: Saves the scraped data into reams2go_products.csv.
 Logging: Provides detailed logs of the scraping process in scraper.log.
 Randomized Timing: Includes randomized sleep intervals to mimic human browsing behavior.
+
+Future Scope
+Enhanced Error Handling: Improve exception handling to manage unexpected API responses or connection issues.
+Multi-threading: Implement concurrency to speed up the scraping process.
+Data Enrichment: Extract additional product details like descriptions, images, and stock availability.
+Command-Line Arguments: Allow users to specify parameters like category filters, output file names, or logging levels.
+Unit Tests: Develop tests to ensure code reliability and facilitate future development.
