@@ -5,6 +5,7 @@ import random
 import requests
 import json
 from logging.handlers import RotatingFileHandler
+import argparse
 
 # Set up logging
 logging.basicConfig(
@@ -184,4 +185,12 @@ def scrape_reams2go():
         logging.info(f"{category['name']}: {category['id']}")
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--output", help="Output CSV file name")
+    parser.add_argument("--log", help="Log file name")
+    args = parser.parse_args()
+
+    output_file = args.output or "reams2go_products.csv"
+    log_file = args.log or "scraper.log"
+    
     scrape_reams2go()
