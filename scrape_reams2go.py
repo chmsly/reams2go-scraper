@@ -19,6 +19,18 @@ logging.basicConfig(
 
 BASE_URL = "https://reamsfoodstores.api.shophero.com/mobileapp/api/v2"
 
+# Proxy configuration
+proxies = {
+    "http": "http://10.10.1.10:3128",
+    "https": "http://10.10.1.10:1080",
+}
+
+# Create a session
+session = requests.Session()
+
+# Apply proxy settings to the session
+session.proxies.update(proxies)
+
 def random_sleep(min_seconds=2, max_seconds=5):
     time.sleep(random.uniform(min_seconds, max_seconds))
 
