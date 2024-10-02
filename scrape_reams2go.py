@@ -129,6 +129,10 @@ def fetch_products_api(session, category_id=None, category_name=None):
             logging.error(f"Error response: {response.text}")
         return all_products
 
+def validate_product(product):
+    required_fields = ['name', 'price', 'category_id']
+    return all(field in product for field in required_fields)
+
 def scrape_reams2go():
     session = get_session()
 
@@ -177,7 +181,10 @@ def scrape_reams2go():
                     fieldnames = ['name', 'price', 'category_id', 'category_name']
                     writer = csv.DictWriter(f, fieldnames=fieldnames)
                     for product in products:
-                        writer.writerow(product)
+                        if validate_product(product):
+                            writer.writerow(product)
+                        else:
+                            logging.warning(f"Invalid product data: {product}")
                 random_sleep(5, 10)
         except Exception as e:
             logging.error(f"An error occurred: {str(e)}")
