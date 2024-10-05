@@ -6,6 +6,7 @@ import requests
 import json
 from logging.handlers import RotatingFileHandler
 import argparse
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # Set up logging
 logging.basicConfig(
